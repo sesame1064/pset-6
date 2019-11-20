@@ -25,13 +25,14 @@ public class ATM {
 
     public ATM() {
         this.in = new Scanner(System.in);   
-        
+        activeAccount = new BankAccount(1234, 123456789, 0, new User("Ryan", "Wilson"));
         try {
 			this.bank = new Bank();
 		} catch (IOException e) {
 			// cleanup any resources (i.e., the Scanner) and exit
 		}
     }
+
 
     public void startup(){
         System.out.println("Welcome to the AIT ATM!");
@@ -57,6 +58,12 @@ public class ATM {
                     }
                     
                 }
+           }else{
+               if(accountNo == -1 && pin == -1){
+                   shutdown();
+               }else{
+                System.out.println("\nInvalid account number and/or PIN.\n");
+               }
            }
         }
     }
@@ -74,7 +81,8 @@ public class ATM {
         System.out.println("[1] View balance");
         System.out.println("[2] Deposit money");
         System.out.println("[3] Withdraw money");
-        System.out.println("[4] Logout");
+        System.out.println("[4] Transfer");
+        System.out.println("[5] Logout");
         
         return in.nextInt();
     }
