@@ -46,22 +46,22 @@ public class BankAccount {
      * @return a fixed-width string in line with the data file specifications.
      */
     
-    private String formatBalance() {
-        return String.format("%1$15s", balance);
-    }
+    // private String formatBalance() {
+    //     return String.format("%1$15s", balance);
+    // }
     
-    /*
-     * Converts this BankAccount object to a string of text in preparation to
-     * be written to the data file.
-     * 
-     * @return a string of text formatted for the data file
-     */
+    // /*
+    //  * Converts this BankAccount object to a string of text in preparation to
+    //  * be written to the data file.
+    //  * 
+    //  * @return a string of text formatted for the data file
+    //  */
     
-    @Override
-    public String toString() {
-        return String.valueOf(accountNo) +
-            String.valueOf(pin) +
-            accountHolder.serialize() +
-            formatBalance();
-    }
+    // @Override
+    // public String toString() {
+    //     return String.valueOf(accountNo) +
+    //         String.valueOf(pin) +
+    //         accountHolder.serialize() +
+    //         formatBalance();
+    // }
 }
