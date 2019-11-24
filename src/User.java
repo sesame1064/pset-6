@@ -27,7 +27,7 @@ public class User {
      */
     
     // public String serialize() {
-    //     return String.format("%1$-" + ATM.firstName.length() + "s", firstName) +
+    //     return String.format("%1$-" + ATM.FIRST_NAME_WIDTH) + "s", firstName) +
     //         String.format("%1$-" + ATM.LAST_NAME_WIDTH + "s", lastName);
     // }
 }

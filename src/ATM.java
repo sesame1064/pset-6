@@ -53,6 +53,7 @@ public class ATM {
                         case VIEW: showBalance(); break;
                         case DEPOSIT: deposit(); break;
                         case WITHDRAW: withdraw(); break;
+                        //case TRANSFER:; break (need to make a transfer method)
                         case LOGOUT: validLogin = false; break;
                         default: System.out.println("\nInvalid selection.\n");break;
                     }
@@ -91,7 +92,7 @@ public class ATM {
     }
 
     public void deposit(){
-        System.out.print("\nEnter amount");
+        System.out.print("\nEnter amount: ");
         double amount = in.nextDouble();
 
         activeAccount.deposit(amount);
@@ -111,7 +112,9 @@ public class ATM {
         System.out.println("\nGoodbye");
         System.exit(0);
     }
+    public void transfer(){
 
+    }
     public static void main(String[] args) {
         ATM atm = new ATM();
         atm.startup();
