@@ -58,7 +58,7 @@ public class ATM {
                 accountNo = 0;
                 createAccount();
                 continue;
-            }else if(accountNoStr.equals("\\d")) {
+            }else if(accountNoStr.matches("[0-9]+")) {
                 accountNo = Long.parseLong(accountNoStr);
                 pin = getPin();
                 login(accountNo, pin);
@@ -84,22 +84,11 @@ public class ATM {
             boolean validLogin = true;
             while (validLogin) {
                 switch (getSelection()) {
-                case VIEW:
-                    showBalance();
-                    break;
-                case DEPOSIT:
-                    deposit();
-                    bank.update(activeAccount);
-                    break;
-                case WITHDRAW:
-                    withdraw();
-                    bank.update(activeAccount);
-                    break;
+                case VIEW: showBalance(); break;
+                case DEPOSIT: deposit(); break;
+                case WITHDRAW: withdraw(); break;
                 // case TRANSFER:; break (need to make a transfer method)
-                case LOGOUT:
-                    bank.save();
-                    validLogin = false;
-                    break;
+                case LOGOUT: validLogin = false; in.nextLine(); break;
                 default:
                     System.out.println("\nInvalid selection.\n");
                     break;
@@ -141,7 +130,13 @@ public class ATM {
         System.out.println("[4] Transfer");
         System.out.println("[5] Logout");
 
-        return in.nextInt();
+        if(in.hasNextInt()){
+            return in.nextInt();
+        }else{
+            in.nextLine();
+            return 6;
+        }
+        
     }
 
     public void showBalance() {
@@ -172,8 +167,6 @@ public class ATM {
                 System.out.println("Invalid Deposit. Please enter a new amount.\n ");
             }
         }
-
-        System.out.println();
     }
 
     public void withdraw() {
@@ -246,7 +239,7 @@ public class ATM {
  
 
     public static void main(final String[] args) {
-        final ATM atm = new ATM();
+        ATM atm = new ATM();
         atm.startup();
 
     }
