@@ -85,7 +85,7 @@ public class ATM {
                 case VIEW: showBalance(); break;
                 case DEPOSIT: deposit(); break;
                 case WITHDRAW: withdraw(); break;
-                case TRANSFER: transfer(); break;
+                case TRANSFER: transfer(); break; //done
                 case LOGOUT: validLogin = false; in.nextLine(); break;
                 default:
                     System.out.println("\nInvalid selection.\n"); break;
@@ -100,7 +100,7 @@ public class ATM {
             }
         }
     }
-    
+    ///check if the inputs are number
     public boolean isNumber(String number){
         boolean isNum = true;
         for(int i = 0; i < number.length(); i++){
