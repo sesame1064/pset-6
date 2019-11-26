@@ -273,7 +273,7 @@ public class ATM {
             pin = in.nextInt();
         }
         // to split the stuff up 
-        in.nextLine();
+
         in.nextLine();
         BankAccount newAccount = bank.createAccount(pin, new User(firstName, lastName));
         System.out.print("\nThank you. Your account number is " + newAccount.getAccountNo() + " .\n");
