@@ -135,7 +135,7 @@ public class ATM {
         }
         return valid;
     }
-
+/// add the transfer - done
     public int getSelection() {
         System.out.println("[1] View balance");
         System.out.println("[2] Deposit money");
@@ -200,7 +200,7 @@ public class ATM {
         System.out.print("\nEnter amount: ");
         try {
             amount = in.nextDouble();
-        } catch (Exception e) {
+        } catch (Exception e) {//catch things that are not numbers
             in.nextLine();
         }
 
