@@ -86,7 +86,7 @@ public class ATM {
                 case VIEW: showBalance(); break;
                 case DEPOSIT: deposit(); break;
                 case WITHDRAW: withdraw(); break;
-                // case TRANSFER:; break (need to make a transfer method)
+                case TRANSFER: transfer(); break;
                 case LOGOUT: validLogin = false; in.nextLine(); break;
                 default:
                     System.out.println("\nInvalid selection.\n"); break;
@@ -151,6 +151,19 @@ public class ATM {
             return 6;
         }
         
+    }
+    
+    public void transfer() {
+    	long secAccountNum; 
+    	boolean validAcc = true;
+    	System.out.print("\nEnter account: ");
+    	if(in.hasNextLong()) {
+    		secAccountNum = in.nextLong();
+    	}else {
+    		secAccountNum = 0;
+    		in.nextLine();
+    		in.nextLine();
+    	}
     }
 
     public void showBalance() {
@@ -222,14 +235,14 @@ public class ATM {
     public void createAccount() {
         System.out.print("\nFirst Name: ");
         String firstName = in.next();
-        while (firstName.length() < 1 || firstName.length() > FIRST_NAME_WIDTH) {
+        while (firstName == null || firstName.length() < 1 || firstName.length() > 20) {
             System.out.print("Invalid name, try again: ");
             firstName = in.next();
         }
 
         System.out.print("\nLast Name: ");
         String lastName = in.next();
-        while (lastName.length() < 1 || lastName.length() > LAST_NAME_WIDTH) {
+        while (lastName == null ||lastName.length() < 1 || lastName.length() > 30) {
             System.out.print("Invalid name, try again:.");
             lastName = in.next();
         }
