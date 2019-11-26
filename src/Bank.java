@@ -53,7 +53,7 @@ public class Bank {
      */
 
     public BankAccount createAccount(int pin, User user) {
-    	accounts.add(new BankAccount(pin, generateAccountNo(), pin, user));
+    	accounts.add(new BankAccount(pin, generateAccountNo(), user));
 
     	return accounts.get(accounts.size() - 1);
     }

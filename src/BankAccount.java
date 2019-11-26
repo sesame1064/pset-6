@@ -17,6 +17,12 @@ public class BankAccount {
         this.accountHolder = accountHolder; 
     }
 
+    public BankAccount(int pin, long accountNo, User accountHolder){
+        this.pin = pin;
+        this.accountNo = accountNo;
+        this.balance = 0.0;
+        this.accountHolder = accountHolder;
+    }
     public int getPin(){
         return pin;
     }
@@ -37,7 +43,7 @@ public class BankAccount {
         if(amount <= 0){
             return ATM.INVALID;
         }else if((amount + balance >= 999999999999.99)){
-            return ATM.OVERFILL;
+            return ATM.OVERFLOW;
         }else{
             balance = balance + amount;
         }
@@ -61,7 +67,7 @@ public class BankAccount {
      */
     
     private String formatBalance() {
-        return String.format("%1$15s", balance);
+        return String.format("%.2f", balance);
     }
     
     /*

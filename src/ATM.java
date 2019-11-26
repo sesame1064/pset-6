@@ -24,7 +24,7 @@ public class ATM {
     public static final int INVALID = 0;
     public static final int INSUFFICIENT = 1;
     public static final int SUCCESS = 2;
-    public static final int OVERFILL = 3;
+    public static final int OVERFLOW = 3;
     
 
     /**
@@ -43,9 +43,8 @@ public class ATM {
     public void startup() {
         long accountNo;
         int pin;
-        
         System.out.println("Welcome to the AIT ATM!");
-
+        
         while (true) {
             System.out.print("Account no.: ");
             String accountNoStr = in.nextLine();
@@ -58,7 +57,7 @@ public class ATM {
                 accountNo = 0;
                 createAccount();
                 continue;
-            }else if(accountNoStr.matches("[0-9]+")) {
+            }else if(isNumber(accountNoStr)) {
                 accountNo = Long.parseLong(accountNoStr);
                 pin = getPin();
                 login(accountNo, pin);
@@ -90,8 +89,7 @@ public class ATM {
                 // case TRANSFER:; break (need to make a transfer method)
                 case LOGOUT: validLogin = false; in.nextLine(); break;
                 default:
-                    System.out.println("\nInvalid selection.\n");
-                    break;
+                    System.out.println("\nInvalid selection.\n"); break;
                 }
 
             }
@@ -104,6 +102,16 @@ public class ATM {
         }
     }
     
+    public boolean isNumber(String number){
+        boolean isNum = true;
+        for(int i = 0; i < number.length(); i++){
+            char char1 = number.charAt(i);
+            if(!Character.isDigit(char1)){
+                isNum = false;
+            }
+        }
+        return isNum;
+    }
 
     public int getPin(){
         int pin = 0;
@@ -111,7 +119,7 @@ public class ATM {
         String pinStr = in.nextLine();
         if(pinStr.isEmpty()){
             pin = 0;
-        }else if(pinStr.equals("\\d")){
+        }else if(isNumber(pinStr)){
             pin = Integer.valueOf(pinStr);
         }else if(pinStr.equals("-1")){
             pin = -1;
@@ -120,7 +128,13 @@ public class ATM {
     }
 
     public boolean isValidLogin(final long accountNo, final int pin) {
-        return accountNo == activeAccount.getAccountNo() && pin == activeAccount.getPin();
+        boolean valid = false;
+        try{
+            valid = bank.login(accountNo, pin) != null ? true : false;
+        }catch (Exception e){
+            valid = false;
+        }
+        return valid;
     }
 
     public int getSelection() {
@@ -157,7 +171,7 @@ public class ATM {
             int status = activeAccount.deposit(amount);
             if(status == ATM.INVALID){
                 System.out.println("\nInvalid Deposit. Please enter a new amount.\n");
-            }else if(status == ATM.OVERFILL){
+            }else if(status == ATM.OVERFLOW){
                 System.out.println("Invalid Deposit. Please enter a new amount.\n ");
             }else if(status == ATM.SUCCESS){
                 System.out.println("\nAmount deposited.\n");
@@ -238,7 +252,7 @@ public class ATM {
 
  
 
-    public static void main(final String[] args) {
+    public static void main(String[] args) {
         ATM atm = new ATM();
         atm.startup();
 
