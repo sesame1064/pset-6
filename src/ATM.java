@@ -181,9 +181,13 @@ public class ATM {
     			if(depositStatus == ATM.OVERFLOW) {
     				System.out.println("\nTransfer rejected. Please try again.\n");
     			}else if(depositStatus == ATM.SUCCESS) {
-    				System.out.print();
+    				System.out.print("\nTransfer accepted.\n");
+    				bank.update(activeAccount);
+    				bank.save();
     			}
     		}
+    	}else {
+    		System.out.println("\nTransfer rejected. Invalid Account.\n");
     	}
     }
 
