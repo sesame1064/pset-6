@@ -252,6 +252,7 @@ public class ATM {
     public void createAccount() {
         System.out.print("\nFirst Name: ");
         String firstName = in.next();
+        //if the name greater of less than the limit
         while (firstName == null || firstName.length() < 1 || firstName.length() > 20) {
             System.out.print("Invalid name, try again: ");
             firstName = in.next();
