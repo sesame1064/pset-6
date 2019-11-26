@@ -270,7 +270,7 @@ public class ATM {
             System.out.print("Invalid PIN, try again: ");
             pin = in.nextInt();
         }
-        
+        // to split the stuff up 
         in.nextLine();
         in.nextLine();
         BankAccount newAccount = bank.createAccount(pin, new User(firstName, lastName));
