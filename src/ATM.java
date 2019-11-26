@@ -232,6 +232,7 @@ public class ATM {
             in.nextLine();
         }
         if(validAmt){
+            ///check system
             int status = activeAccount.withdraw(amount);
             if(status == ATM.INVALID){
                 System.out.print("\nInvalid withdraw. PLease enter a new amount.\n");
