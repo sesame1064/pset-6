@@ -164,6 +164,27 @@ public class ATM {
     		in.nextLine();
     		in.nextLine();
     	}
+    	System.out.print("\nEnter amount");
+    	double amount = in.nextDouble();
+    	if(bank.getAccount(secAccountNum) == null) {
+    		validAcc = false;
+    	}
+    	if(validAcc) {
+    		BankAccount transferAccount = bank.getAccount(secAccountNum);
+    		int withdrawStatus = activeAccount.withdraw(amount);
+    		if(withdrawStatus == ATM.INVALID) {
+    			System.out.println("\nTransfer rejected. PLease try again.\n");
+    		}else if(withdrawStatus == ATM.INSUFFICIENT) {
+    			System.out.println("\nTransfer rejected. Please try again.\n");
+    		}else if(withdrawStatus == ATM.SUCCESS) {
+    			int depositStatus = transferAccount.deposit(amount);
+    			if(depositStatus == ATM.OVERFLOW) {
+    				System.out.println("\nTransfer rejected. Please try again.\n");
+    			}else if(depositStatus == ATM.SUCCESS) {
+    				System.out.print();
+    			}
+    		}
+    	}
     }
 
     public void showBalance() {
