@@ -114,7 +114,7 @@ public class ATM {
 
     public int getPin(){
         int pin = 0;
-        System.out.print("\nPIN       : ");
+        System.out.print("\nPIN        : ");
         String pinStr = in.nextLine();
         if(pinStr.isEmpty()){
             pin = 0;
@@ -247,14 +247,7 @@ public class ATM {
         }
     }
 
-    public void shutdown() {
-        if (in != null) {
-            in.close();
-        }
 
-        System.out.println("\nGoodbye");
-        System.exit(0);
-    }
 
     public void createAccount() {
         System.out.print("\nFirst Name: ");
@@ -277,7 +270,9 @@ public class ATM {
             System.out.print("Invalid PIN, try again: ");
             pin = in.nextInt();
         }
-
+        
+        in.nextLine();
+        in.nextLine();
         BankAccount newAccount = bank.createAccount(pin, new User(firstName, lastName));
         System.out.print("\nThank you. Your account number is " + newAccount.getAccountNo() + " .\n");
         System.out.print("Please login to acces your newly created account. \n");
@@ -285,7 +280,14 @@ public class ATM {
         bank.save();
 
     }
+    public void shutdown() {
+        if (in != null) {
+            in.close();
+        }
 
+        System.out.println("\nGoodbye");
+        System.exit(0);
+    }
  
 
     public static void main(String[] args) {
