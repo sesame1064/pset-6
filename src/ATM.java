@@ -279,11 +279,11 @@ public class ATM {
         }
 
         BankAccount newAccount = bank.createAccount(pin, new User(firstName, lastName));
+        System.out.print("\nThank you. Your account number is " + newAccount.getAccountNo() + ".");
+        System.out.print("Please login to acces your newly created account. \n");
         bank.update(newAccount);
         bank.save();
 
-        System.out.print("\nThank you. Your account number is " + newAccount.getAccountNo() + ".");
-        System.out.print("Please login to acces your newly created account. \n");
     }
 
  
