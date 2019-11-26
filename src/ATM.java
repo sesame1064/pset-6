@@ -264,7 +264,7 @@ public class ATM {
             System.out.print("Invalid name, try again:.");
             lastName = in.next();
         }
-
+        ///make sure that the pin isnt less than 4 numbers 
         System.out.print("PIN: ");
         int pin = in.nextInt();
         while (pin < 1000 || pin > 9999) {
