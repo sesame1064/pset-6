@@ -26,7 +26,7 @@ public class Bank {
     private final static int LAST_NAME_END = 63;
     private final static int BALANCE_START = 63;
 
-    private final static String DATA = "data/accounts.dat";		// data file path
+    private static String DATA = "data/accounts.dat";		// data file path
 
     private List<BankAccount> accounts;							// an in-memory list of BankAccount objects
 
@@ -37,11 +37,18 @@ public class Bank {
      */
 
     public Bank() throws IOException {
+        String filepath = System.getProperty("user.dir");
+        boolean windows = filepath.matches(".*\\\\.*");
+
+        filepath = windows ? filepath.replaceAll("\\\\src$", ""): filepath.replaceAll("/src$", "");
+        String addition = windows ? "\\data\\accounts.dat" : "/data/accounts.dat";
+        Bank.DATA = filepath + addition;
         accounts = init();
 
         if (accounts == null) {
         	throw new IOException();
         }
+
     }
 
     /**
