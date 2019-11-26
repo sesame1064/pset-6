@@ -56,7 +56,6 @@ public class ATM {
             }else if(accountNoStr.equals("+")) {
                 accountNo = 0;
                 createAccount();
-                continue;
             }else if(isNumber(accountNoStr)) {
                 accountNo = Long.parseLong(accountNoStr);
                 pin = getPin();
@@ -283,9 +282,8 @@ public class ATM {
         bank.update(newAccount);
         bank.save();
 
-        System.out.print("\nThank you. Your account number is " + activeAccount.getAccountNo() + ".");
+        System.out.print("\nThank you. Your account number is " + newAccount.getAccountNo() + ".");
         System.out.print("Please login to acces your newly created account. \n");
-
     }
 
  
