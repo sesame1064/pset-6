@@ -46,7 +46,7 @@ public class ATM {
         System.out.println("Welcome to the AIT ATM!");
         
         while (true) {
-            System.out.print("Account no.: ");
+            System.out.print("\nAccount no.: ");
             String accountNoStr = in.nextLine();
             
             if(accountNoStr.isEmpty()){
@@ -114,7 +114,7 @@ public class ATM {
 
     public int getPin(){
         int pin = 0;
-        System.out.print("PIN       : ");
+        System.out.print("\nPIN       : ");
         String pinStr = in.nextLine();
         if(pinStr.isEmpty()){
             pin = 0;
@@ -264,7 +264,7 @@ public class ATM {
             firstName = in.next();
         }
 
-        System.out.print("\nLast Name: ");
+        System.out.print("Last Name: ");
         String lastName = in.next();
         while (lastName == null ||lastName.length() < 1 || lastName.length() > 30) {
             System.out.print("Invalid name, try again:.");
@@ -279,7 +279,7 @@ public class ATM {
         }
 
         BankAccount newAccount = bank.createAccount(pin, new User(firstName, lastName));
-        System.out.print("\nThank you. Your account number is " + newAccount.getAccountNo() + ".");
+        System.out.print("\nThank you. Your account number is " + newAccount.getAccountNo() + " .\n");
         System.out.print("Please login to acces your newly created account. \n");
         bank.update(newAccount);
         bank.save();
